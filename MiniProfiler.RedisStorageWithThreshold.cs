@@ -7,7 +7,11 @@ using StackExchange.Redis;
 
 namespace ItsJk.Snippets.MiniProfiler
 {
-   //This is a Wrapper for MiniProfiler.RedisStorage that logs only if the duration of the profile is more than the threshold set. 
+   //This is a Wrapper for MiniProfiler.RedisStorage that logs only if the duration of the profile is more than the threshold set.
+   // Use it like this:
+   //services.AddMiniProfiler(options => {
+   //    options.Storage = new RedisStorageWithThreshold(RedisConnection/*your redis connection*/, 5000 /*log anything over 5 seconds*/);
+   //});
    public class RedisStorageWithThreshold : IAsyncStorage, IDisposable
     {
         private readonly int _threshold;
